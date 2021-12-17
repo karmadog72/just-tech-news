@@ -1,8 +1,7 @@
 const router = require("express").Router();
 
-router.get("/", (req, res) => {
-  console.log(req.session);
-  res.render("homepage", {
+router.get("/post/:id", (req, res) => {
+  const post = {
     id: 1,
     post_url: "https://handlebarsjs.com/guide/",
     title: "Handlebars Docs",
@@ -12,7 +11,9 @@ router.get("/", (req, res) => {
     user: {
       username: "test_user",
     },
-  });
+  };
+
+  res.render("single-post", { post });
 });
 
 router.get("/login", (req, res) => {
