@@ -24,6 +24,16 @@ class Post extends Model {
             "vote_count",
           ],
         ],
+        include: [
+          {
+            model: models.comment,
+            attributes: ["id", "comment_text", "user_id", "post_id"],
+            include: {
+              model: models.user,
+              attributes: ["username"],
+            },
+          },
+        ],
       });
     });
   }
